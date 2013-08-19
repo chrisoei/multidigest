@@ -1,4 +1,4 @@
-package main
+package multidigest
 
 import (
 	"code.google.com/p/go.crypto/ripemd160"
