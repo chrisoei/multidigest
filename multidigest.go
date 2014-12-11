@@ -36,7 +36,7 @@ func New() MultiHashContext {
 	contexts["sha1"] = sha1.New()
 	contexts["sha2-256"] = sha256.New()
 	contexts["sha2-512"] = sha512.New()
-	contexts["sha3-256"] = sha3.NewKeccak256()
+	contexts["sha3-256"] = sha3.New256()
 	s := SizeWriter(0)
 	return MultiHashContext{contexts: contexts, sw: &s}
 }
