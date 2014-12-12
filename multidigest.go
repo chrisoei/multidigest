@@ -56,7 +56,7 @@ func (h *MultiHashContext) Result() map[string]string {
 		result[k] = fmt.Sprintf("%x", v.Sum(nil))
 	}
 	result["size"] = fmt.Sprintf("%d", uint64(*h.sw))
-	result["version"] = "multidigest-1.0.0"
+	result["version"] = "multidigest-2.0.0"
 	return result
 }
 
