@@ -8,7 +8,6 @@ import (
 	"crypto/sha512"
 	"fmt"
 	"hash"
-	"hash/adler32"
 	"hash/crc32"
 	"io"
 )
@@ -28,7 +27,6 @@ type MultiHashContext struct {
 
 func New() MultiHashContext {
 	contexts := make(map[string]hash.Hash)
-	contexts["adler32"] = adler32.New()
 	contexts["crc32"] = crc32.NewIEEE()
 	contexts["md5"] = md5.New()
 	contexts["sha1"] = sha1.New()
@@ -54,7 +52,7 @@ func (h *MultiHashContext) Result() map[string]string {
 		result[k] = fmt.Sprintf("%x", v.Sum(nil))
 	}
 	result["size"] = fmt.Sprintf("%d", uint64(*h.sw))
-	result["version"] = "multidigest-3.0.0"
+	result["version"] = "multidigest-4.0.0"
 	return result
 }
 
