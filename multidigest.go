@@ -1,8 +1,7 @@
 package multidigest
 
 import (
-	"code.google.com/p/go.crypto/ripemd160"
-	"code.google.com/p/go.crypto/sha3"
+	"golang.org/x/crypto/sha3"
 	"crypto/md5"
 	"crypto/sha1"
 	"crypto/sha256"
@@ -32,7 +31,6 @@ func New() MultiHashContext {
 	contexts["adler32"] = adler32.New()
 	contexts["crc32"] = crc32.NewIEEE()
 	contexts["md5"] = md5.New()
-	contexts["ripemd160"] = ripemd160.New()
 	contexts["sha1"] = sha1.New()
 	contexts["sha2-256"] = sha256.New()
 	contexts["sha2-512"] = sha512.New()
@@ -56,7 +54,7 @@ func (h *MultiHashContext) Result() map[string]string {
 		result[k] = fmt.Sprintf("%x", v.Sum(nil))
 	}
 	result["size"] = fmt.Sprintf("%d", uint64(*h.sw))
-	result["version"] = "multidigest-2.0.0"
+	result["version"] = "multidigest-3.0.0"
 	return result
 }
 
